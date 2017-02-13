@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<hibernate-mapping >
+	<class name="model.User" table="t_user">
+	<id name="id">
+	<generator class="native"/>
+	</id>
+	<property name="account" type="string"/>
+	<property name="nickname"/>
+    <property name="password"/>
+    <property name="role"/>
+    <bag name="articles" table="t_article" inverse="true" cascade="delete" >
+    <key column="userid"/>
+   
+    <one-to-many class="model.Article" />
+    </bag>
+      <bag name="comments" table="t_comment" inverse="false" cascade="delete">
+    <key column="userid2"/>
+  
+    <one-to-many class="model.Comment" />
+    </bag>
+	</class>
+	</hibernate-mapping>

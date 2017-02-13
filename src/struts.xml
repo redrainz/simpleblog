@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.objectFactory" value="spring" />
+<constant name="struts.multipart.maxSize" value="110000000"/>
+
+	<package name="default" namespace="/" extends="struts-default">
+	
+	
+	<interceptors>
+	<interceptor name="role" class="interceptor.Role">
+	</interceptor>
+	
+	<interceptor-stack name="action-role">
+	<interceptor-ref name="role"/>
+    <interceptor-ref name="defaultStack"/>
+	</interceptor-stack>
+	</interceptors>
+	
+
+		<default-action-ref name="index" />
+
+		<global-results>
+			<result name="error">/WEB-INF/jsp/error.jsp</result>
+			<result name="zhuce">/jsp/zhuce.jsp</result>
+		</global-results>
+
+<!-- 		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception"
+				result="error" />
+		</global-exception-mappings> -->
+
+		<action name="index">
+			<result type="redirectAction">
+				<param name="actionName">HelloWorld</param>
+				<param name="namespace">/example</param>
+			</result>
+		</action>
+		
+		<action name="login" class="login" method="login">
+	     
+		<result name="success">/jsp/login-in.jsp</result>
+		<result name="zhuce">/jsp/zhuce.jsp</result>
+		<result name="loginwrong">/jsp/login-wrong.jsp</result>
+		</action>
+		
+		<action name="zhuce" class="login" method="zhuce">
+		<result name="success">/jsp/homepage.jsp</result>
+		<result name="zhuce">/jsp/zhuce.jsp</result>
+		</action>
+		
+		<action name="roleexit" class="login" method="exit">
+		<result name="success">/index.html</result>
+		
+		</action>
+		
+		<action name="allarticle" class="article" method="queryall">
+		<interceptor-ref name="action-role"/>
+		<result name="success">/jsp/homepage.jsp</result>
+		</action>
+		<action name="moviestart" class="article" method="moviestart">
+		<interceptor-ref name="action-role"/>
+		<result name="success">/jsp/moviestart.jsp</result>
+		</action>
+		
+		<action name="downloadmovie" class="article" >
+		<interceptor-ref name="action-role"/>
+	<!-- 	<result name="success">/jsp/homepage.jsp</result> -->
+		<result name="success" type="stream">
+	<param name="contentDisposition">attachment;filename="${filename}"</param> 
+	<param name="bufferSize">110000000</param>
+	 <param name="inputName">download</param>
+		</result>
+		</action>
+		<action name="writearticle" class="article" method="write">
+		<interceptor-ref name="action-role"/>
+	<!-- 	<result name="success">/jsp/homepage.jsp</result> -->
+		<result name="success">/jsp/articlesuccess.jsp</result>
+		</action>
+		
+
+		<action name="myarticle" class="article" method="query">
+		<interceptor-ref name="action-role"/>
+		<result name="success">/jsp/myarticle.jsp</result>
+		</action>
+		<action name="onearticle*" class="article" method="one{1}">
+		<result>/jsp/onearticle{1}.jsp</result></action>
+		<action name="hponearticle*" class="article" method="hpone{1}">
+		<result>/jsp/hponearticle{1}.jsp</result></action>
+		<action name="addcomment" class="comment" method="add">
+		<result>/jsp/hponearticleget.jsp</result></action>
+		
+	</package>
+         
+	<include file="example.xml" />
+
+	<!-- Add packages here -->
+
+</struts>

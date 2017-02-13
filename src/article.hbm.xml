@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<hibernate-mapping package="model">
+	<class name="Article" table="t_article">
+	<id name="id">
+	<generator class="identity"/>
+	</id>
+	<property name="date" type="timestamp" />
+	<property name="title" />
+    <property name="describes"/>
+    <property name="movie"/>
+    <property name="content" type="text" length="5000"/>
+    <many-to-one name="user" column="userid" class="User" lazy="false"/>
+    <bag name="comments" table="t_comment" inverse="false" lazy="false" cascade="delete">
+    <key column="articleid"/>
+   
+    <one-to-many class="Comment" />
+    </bag>
+	</class>
+	</hibernate-mapping>

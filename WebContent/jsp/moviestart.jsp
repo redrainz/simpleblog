@@ -10,11 +10,11 @@
 
 <body>
 <%@include file="header.jsp" %>
-<video src="/simpleblog/upload/${ movie}" controls="controls" height="80%" width="100%">
+ <video src="../../upload/${ movie}" controls="controls" height="80%" width="100%">
 
 ${ movie}
            
-</video>
-
+</video> 
+<%-- <a href="/simpleblog/upload/${movie }">dds</a> --%>
 </body>
 </html>

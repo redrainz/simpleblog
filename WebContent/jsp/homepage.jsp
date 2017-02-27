@@ -75,10 +75,10 @@ background-image:url(/simpleblog/1.jpg);
 <s:iterator >
 ${user.nickname}----
 <a href="hponearticleget?id=${id }">${title }</a>
------${date }-----${ content}<br>
-${movie }<a href="downloadmovie?savePath=${movie }">下载</a>
+-----${describes}<br>${date }<br>
+${movie }<br><a href="downloadmovie?savePath=${movie }">下载      </a>
 
-------<a href="moviestart?savePath=${movie }">播放</a>
+<a href="moviestart?savePath=${movie }">播放</a>
 <br>
 </s:iterator>
 </div>

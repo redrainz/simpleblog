@@ -114,7 +114,8 @@ public void setArticlesurvice(ArticleSurvice articlesurvice) {
 }
 
 public String filegai() throws IOException{
-	savePath="C:\\tomcat8\\webapps\\simpleblog\\upload";
+	savePath="C:\\tomcat8\\webapps\\upload";
+	
 	FileOutputStream fos=new FileOutputStream(savePath+"\\"+movieFileName);
 	FileInputStream fis=new FileInputStream(movie);
 	byte[] buffer=new byte[110000000];
@@ -125,7 +126,7 @@ public String filegai() throws IOException{
 	return movieFileName;
 }
 public InputStream getDownload() throws IOException{
-	File f=new File("C:\\tomcat8\\webapps\\simpleblog\\upload\\"+savePath);
+	File f=new File("C:\\tomcat8\\webapps\\upload\\"+savePath);
 	
 	InputStream in=new FileInputStream(f);
 	
@@ -185,6 +186,7 @@ public String queryall(){
   public String onedalete(){
 	  
 	  articlesurvice.delete(id);
+
 	  
 	  return SUCCESS;
 	  

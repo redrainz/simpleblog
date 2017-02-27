@@ -13,7 +13,7 @@ public class Role  extends AbstractInterceptor{
 	public String intercept(ActionInvocation arg0) throws Exception {
 		User user=(User) arg0.getInvocationContext().getSession().get("user");
 	   if(user==null)
-		return "zhuce";
+		return "roleexit";
 	   else return arg0.invoke();
 	}
 

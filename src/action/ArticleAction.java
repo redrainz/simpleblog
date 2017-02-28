@@ -185,6 +185,7 @@ public String queryall(){
   }
   public String onedalete(){
 	  
+	
 	  articlesurvice.delete(id);
 
 	  

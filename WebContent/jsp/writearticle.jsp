@@ -39,7 +39,7 @@ function yan(){
 <s:form action="writearticle" id="form" method="post" enctype="multipart/form-data" >
 <s:textarea rows="1" cols="100" name="title" label="标题"/>
 <s:textarea rows="3" cols="100" name="describes" label="大纲"/>
-<s:textarea rows="30" cols="100" name="content" label="内容"/>
+<s:textarea rows="20" cols="100" name="content" label="内容"/>
 <s:file name="movie" label="文件" ></s:file>
 <br>
 </s:form>

@@ -42,7 +42,7 @@
 		
 		<action name="login" class="login" method="login">
 	     
-		<result name="success">/jsp/login-in.jsp</result>
+		<result name="success" type="redirectAction">allarticle</result>
 		<result name="zhuce">/jsp/zhuce.jsp</result>
 		<result name="loginwrong">/jsp/login-wrong.jsp</result>
 		</action>

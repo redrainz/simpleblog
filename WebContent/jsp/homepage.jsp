@@ -2,100 +2,50 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     <%@taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-
-<!-- <style>
-#header {
-    background-color:black;
-    color:white;
-    text-align:center;
-    padding:5px;
-}
-#nav {
-    line-height:30px;
-    background-color:#eeeeee;
-    height:300px;
-    width:30%;
-    float:right;
-    padding:5px;	      
-}
-#section {
-    width:350px;
-    float:left;
-    padding:10px;	 	 
-}
-#footer {
-    background-color:black;
-    color:white;
-    clear:both;
-    text-align:center;
-   padding:5px;	 	 
-}
-</style> -->
-<style>
-#header{
-width:100%;
-height:10%;
-text-align:center;
-}
-#left {
-float:left;
-width:25%;
-height:100%;
-
-	 
-}
-#center {
-float:left;
-width:50%;
-height:100%;
-
- 	 
-}
-#right {
-float:right;
-width:25%;
-height:100%;
-
- 	 
-}
-body{
-background-image:url(/simpleblog/1.jpg);
-}
-</style>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>首页</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>HomePage</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
 </head>
-<body >
-<center>
+
+
+<body>
 <%@include file="header.jsp" %>
-<div id="left">
-<s:iterator >
-${user.nickname}----
-<a href="hponearticleget?id=${id }">${title }</a>
------${describes}<br>${date }<br>
-${movie }<br><a href="downloadmovie?savePath=${movie }">下载      </a>
-
-<a href="moviestart?savePath=${movie }">播放</a>
-<br>
+    <table class="filetable">
+    
+    <thead>
+    	<tr>
+        <th>作者</th>
+        <th>标题</th>
+        <th>简介</th>
+        <th>附件</th>
+        <th>下载</th>
+        <th>播放</th>
+        <th>修改日期</th>
+        </tr>    	
+    </thead>
+    
+    <tbody>
+    <s:iterator >
+    <tr>
+   <td>${user.nickname}</td>
+ <td><a href="hponearticleget?id=${id }">${title }</a></td>
+ <td>${describes}</td>
+ <td>${movie }</td>
+ <td><a href="downloadmovie?savePath=${movie }">下载      </a></td>
+ <td><a href="moviestart?savePath=${movie }">播放</a></td>
+ <td>${date }</td>
+        </tr>
 </s:iterator>
-</div>
-<div id="center">
-sdasd
-</div>
-<div id="right">
-
-ygfghfg
-</div>
-</center>
+    	
+    </tbody>
+    
+    
+    
+    
+    </table>
 </body>
-<!-- <frameset cols="25%,50%,25%" border="0">
-
-  <frame src="htmlpage/index-left.html">
-  <frame src="htmlpage/index-center.jsp">
-  <frame src="htmlpage/login-in.html">
-
-</frameset> -->
 </html>
